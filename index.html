@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Pokedex</title>
+</head>
+<body>
+    <div class="container">
+        <div id="linha" class="row">
+          
+        </div>
+    </div>
+
+    <script>
+        $.ajax({
+            url: 'https://pokeapi.co/api/v2/pokemon/3',
+            method: 'get',
+            async: false,
+            success: function(resposta){
+                var linha = document.getElementById("linha")
+                conteudo = '<div class="card" style="width: 18rem;">\
+                    <img class="card-img-top" src="'+resposta['sprites']['other']['dream_world']['front_default']+'" alt="Card image cap">\
+                    <div class="card-body">\
+                      <h5 class="card-title">'+resposta['forms'][0]['name']+'</h5>\
+                    </div>\
+                  </div>'
+                linha.innerHTML = conteudo
+
+                console.log(resposta['sprites']['other']['dream_world']['front_default'])
+                console.log(resposta['forms'][0]['name'])
+            },
+        })
+    </script>
+</body>
+</html>
